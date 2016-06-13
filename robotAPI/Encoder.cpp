@@ -45,7 +45,10 @@ void countRight() {
 }
 
 Encoder::Encoder() {
-
+	for (int i=0; i<NBUF; i++) {
+		buffer[i] = 0;
+	}
+   b = 0;
 }
 
 void Encoder::updateSpeed(rbtTime now) { //On Edge Interrupt
@@ -59,9 +62,6 @@ void Encoder::updateSpeed(rbtTime now) { //On Edge Interrupt
 }
 
 float Encoder::filter(float pulseSpeed) {
-	static const int NBUF = 4;
-	static float buffer[NBUF]; //buffer circular
-	static int b=0;
 	
 	//adiciona ao buffer
 	buffer[b] = pulseSpeed;

@@ -10,6 +10,7 @@
 
 #define LEFT_SIDE 0
 #define RIGHT_SIDE 1
+#define NBUF 4
 #include "RobotTimer.h"
 
 class Encoder {
@@ -21,6 +22,8 @@ class Encoder {
 
 	long steps;
 	long lastStep;
+	float buffer[NBUF]; //buffer circular
+	int b;					// posicao no buffer
 
 public:
 	Encoder();

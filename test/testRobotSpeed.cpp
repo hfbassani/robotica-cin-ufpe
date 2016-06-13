@@ -45,8 +45,8 @@ int main(int argc, char** argv) {
 
 	KBAsync kb;
 	int key;
-	float speed=7;
-	float kp=0.1, ki=0.00, kd=0.0;
+	float speed=0;
+	float kp=0.05, ki=0.00, kd=0.0;
 	float minPower = 5;
         float spdSampRate = 0;
 	int dir = 1;
@@ -136,17 +136,13 @@ int main(int argc, char** argv) {
 
 		motorL.controlSpeed();
 		motorR.controlSpeed();
-		//motorL.setPower(17);
-		//motorL.writePower();
-		//encoderL.getSpeed();
 
 		static rbtTime lastTime=0;
 		rbtTime time = RobotTimer::getTime_us();
 		rbtTime deltat = time-lastTime;
 		if (deltat>200000) { 
 
-			//std::cout << "Target: " << dir*speed << " SpdL: " << motorL.getSpeed() << " pwrL: " << motorL.getPower() << " SpdR: " << motorR.getSpeed() << " pwrR: " << motorR.getPower() << " errL: " << motorL.pid.err() << " cL: " << motorL.pid.output() << nl;
-			std::cout << "Target: " << dir*speed << " SpeedLR: " << motorL.getSpeed() << "|" << motorR.getSpeed() << " Pwr: " << motorL.getPower() << "|" <<  motorL.getPower() << nl;
+			std::cout << "Target: " << dir*speed << " SpeedLR: " << motorL.getSpeed() << " | " << motorR.getSpeed() << " PwrLR: " << motorL.getPower() << " | " <<  motorR.getPower() << nl;
 
 			lastTime = time;
 		}

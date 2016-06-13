@@ -56,11 +56,11 @@ int main(int argc, char** argv) {
 
 	encoderL.setup(ENCODER_LEFT, LEFT_SIDE);
 	encoderR.setup(ENCODER_RIGHT, RIGHT_SIDE);
-	sonar.setup(SONAR_TRIGGER, SONAR_ECHO);
+	sonar.setup(SONAR_FRONT_TRIGGER, SONAR_FRONT_ECHO);
 	motorL.setup(MOTOR_LEFT_A, MOTOR_LEFT_B, MOTOR_LEFT_E, &encoderL);
 	motorR.setup(MOTOR_RIGHT_A, MOTOR_RIGHT_B, MOTOR_RIGHT_E, &encoderR);
-	motorL.setK(2);
-	motorR.setK(2);
+	motorL.pid.setKp(0.1);
+	motorR.pid.setKp(0.1);
 
 	VideoCapture cap(0); // open the video camera no. 0
 	if (cap.isOpened()) {
